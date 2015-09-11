@@ -1,0 +1,28 @@
+{% extends 'app/base.html' %}
+
+{% load staticfiles %}
+
+{% block title %}About Us{% endblock %}
+
+
+{% block lefter_block %}
+<h1>About Us</h1>
+<p>We're G-You Magazine, Libraries Commitee</p>
+
+
+{% endblock %}
+
+{% block righter_block %}
+<!--  List of latest news -->
+{% for art in latest %}
+    <a href="/category/{{art.category.slug}}/{{art.slug}}/" class="thumbnail img-responsive" id = "thumb" style = "background: url('/media/{{art.image}}/');">
+      
+      <div class="caption">
+        <p id = "thumbCat">{{art.category}}</p>
+        <h3 id = "thumbTitle">{{art.title}}</h3> 
+       </div>
+        </a>   
+      {% endfor %}
+
+
+{% endblock %}

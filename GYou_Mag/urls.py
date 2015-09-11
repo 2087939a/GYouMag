@@ -18,13 +18,18 @@ from django.contrib import admin
 from app import views
 from django.conf import settings
 from django.conf.urls.static import static
-
+from django.conf.urls.i18n import i18n_patterns
 
 
 urlpatterns = patterns('',
         url(r'^admin/', include(admin.site.urls)),
         url(r'^$', views.index, name='index'),
-        url(r'^category/(?P<category_name_slug>[\w\-]+)/$', views.category, name='category'),)  # New!
+        url(r'^category/(?P<category_name_slug>[\w\-]+)/$', views.category, name='category'),
+        url(r'^category/(?P<category_name_slug>[\w\-]+)/(?P<article_title_slug>[\w\-]+)/$', views.article, name='article'),
+        url(r'^category/(?P<category_name_slug>[\w\-]+)/add_article/$', views.add_article, name='add_article'),
+        url(r'^about/$', views.about, name='about')
+
+        ,)
 
 
 

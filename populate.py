@@ -22,7 +22,13 @@ def populate():
     content = "Je suis fan de Benoit Magimel, Sebastien."*1500,
     author = "Kemar"
     )
-	
+    
+    add_article(cat = cultureCat ,
+    title = "La creme glacee c'est michto" , 
+    content = "Lucien Coquin "*1500,
+    author = "TerryBadTrip"
+    )	
+    
     musicCat = add_cat('Music')
     
     add_article(cat = musicCat ,
@@ -30,7 +36,10 @@ def populate():
     content = "J'adore les sons dark c'est enorme haha!"*1500,
     author = "Marc-Olivier Fogiel"
     )
-
+    
+    
+    
+    
     politicsCat = add_cat('Politics')
     lifestyleCat = add_cat('Lifestyle')
     featuresCat = add_cat('Features')

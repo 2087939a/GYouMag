@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 
+#gettext = lambda s: s
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 TEMPLATE_PATH = os.path.join(BASE_DIR, 'templates')
@@ -44,7 +45,15 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-	'app',
+	  'app',
+#     'hitcount',
+    #'cms',  # django CMS itself
+    #'treebeard',  # utilities for implementing a tree
+    #'menus',  # helper for model independent hierarchical website navigation
+    #'south',  # Only needed for Django < 1.7
+    #'sekizai',  # for javascript and css management
+    #'djangocms_admin_style',  # for the admin skin. You **must** add 'djangocms_admin_style' in the list **before** 'django.contrib.admin'.
+
 )
 
 MIDDLEWARE_CLASSES = (
@@ -56,6 +65,11 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
+    #'cms.middleware.user.CurrentUserMiddleware',
+    #'cms.middleware.page.CurrentPageMiddleware',
+    #'cms.middleware.toolbar.ToolbarMiddleware',
+    #'cms.middleware.language.LanguageCookieMiddleware',
 )
 
 ROOT_URLCONF = 'GYou_Mag.urls'
@@ -71,12 +85,17 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-            ],
+                'django.core.context_processors.media',
+                'django.core.context_processors.static',
+                ]
         },
     },
 ]
 
+
+
 WSGI_APPLICATION = 'GYou_Mag.wsgi.application'
+
 
 
 # Database
@@ -86,6 +105,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        
     }
 }
 
@@ -113,3 +133,7 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
     '/var/www/static/',
 )
+
+MEDIA_URL = 'media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/') # Absolute path to the media directory
+

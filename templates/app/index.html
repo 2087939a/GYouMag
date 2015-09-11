@@ -4,14 +4,26 @@
 
 {% block title %}Index{% endblock %}
 
-{% block body_block %}
 
-	<h1>Terry says...</h1>
-	
-		
-        Whassup <strong>{{ boldmessage }}</strong><br />
-        <img src= "{% static "images/mothafucka.gif" %}" alt ="Hank Moody" />
 
+{% if articles %}
+ 
+
+{% block row %}
+  
+
+
+{% block lefter_block %}   
+<h1> Trending </h1>
+{% for art in trending %}
+    <a href="/category/{{art.category.slug}}/{{art.slug}}/" class="thumbnail img-responsive" id = "thumb" style = "background: url('/media/{{art.image}}/');">
+      
+      <div class="caption">
+        <p id = "thumbCat">{{art.category}}</p>
+        <h3 id = "thumbTitle">{{art.title}}</h3> 
+       </div>
+        </a>   
+      {% endfor %}
 {% endblock %}
 
 
@@ -19,3 +31,26 @@
 
 
 
+
+
+{% block righter_block %}
+<!--  List of latest news -->
+{% for art in latest %}
+    <a href="/category/{{art.category.slug}}/{{art.slug}}/" class="thumbnail img-responsive" id = "thumb" style = "background: url('/media/{{art.image}}/');">
+      
+      <div class="caption">
+        <p id = "thumbCat">{{art.category}}</p>
+        <h3 id = "thumbTitle">{{art.title}}</h3> 
+       </div>
+        </a>   
+      {% endfor %}
+
+
+{% endblock %}
+
+
+{% endblock %}
+
+{% else %}
+  <li>No articles have been posted</li>
+{% endif %}

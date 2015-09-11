@@ -1,52 +1,33 @@
+
 {% extends 'app/base.html' %}
 
 {% load staticfiles %}
 
-{% block title %}{{ category_name }}{% endblock %}
+{% block title %}{{ article_title }} | {{ category_name }}{% endblock %}
 
 {% block lefter_block %}
+<h3>{{ category_name }}</h3>
 
-<style>
+<h1>{{ article_title }}</h1>
 
+<div id="content">
+				
+	<p style = "font-family: Arial, Helvetica, sans-serif;">{{ article_content|linebreaks }}</p>
+                
+</div>
+  {% if other_articles %}
+  {% for art in other_articles %}
+    <ul>
+     <strong> <a href = "/category/{{art.category.slug}}/{{art.slug}}/">{{art.title}}</a></strong>
+      </ul>     
+{% endfor %}
 
-</style>
-
-
-<h1>{{ category_name }}</h1>
-
-{% if category %}
-
-
-
-<!-- <p><li><a href="/category/{{ category.slug }}/add_article/">Add a new article in this category bitch</a></li></p> -->
-{% endif %} 
-{% if articles %}         
-
-  <div class="row">
-  <div class="col-sm-6 col-md-8">
-    
-    {% for art in trending %}
-    <a href="/category/{{art.category.slug}}/{{art.slug}}/" class="thumbnail img-responsive" id = "thumb" style = "background: url('/media/{{art.image}}/');">
-
-      <div class="caption">
-        <p id = "thumbCat">{{art.category}}</p>
-        
-        <h3 id = "thumbTitle">{{art.title}}</h3>
-
-        
-      </div>
-    </a>
-    {% endfor %}
-  </div>
-  </div>
-{% else %}
-  <li>No articles have been posted</li>
 {% endif %}
-
 
 {% endblock %}
 
 {% block righter_block %}
+
 {% for art in latest_cat %}
     <a href="/category/{{art.category.slug}}/{{art.slug}}/" class="thumbnail img-responsive" id = "thumb" style = "background: url('/media/{{art.image}}/');">
       
@@ -56,7 +37,9 @@
        </div>
         </a>   
       {% endfor %}
-<h/> Latest NEWS
+
+<div class="col-xs-12 col-sm-8 col-md-8">
+<h1/> Latest NEWS
 {% for art in latest %}
     <a href="/category/{{art.category.slug}}/{{art.slug}}/" class="thumbnail img-responsive" id = "thumb" style = "background: url('/media/{{art.image}}/');">
       
@@ -66,4 +49,5 @@
        </div>
         </a>   
       {% endfor %}
+</div>
 {% endblock %}

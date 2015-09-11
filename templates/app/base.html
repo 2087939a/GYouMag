@@ -1,9 +1,10 @@
 <!DOCTYPE html>
+
 {% load staticfiles %}
 
 <html lang="en">
   <head>
-    <title>G-You Magazine - {% block title %}Index{% endblock %}</title>
+    <title>G-You Magazine - {% block title %}{% endblock %}</title>
 	
 	<meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -20,12 +21,13 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-	
+<!-- 	  <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="{% static 'hitcount/hitcount-jquery.js' %}"></script> -->
 	<style>
-
+  
 	#navigationBar {
-    background: rgba(255,255,255,0.8);
-	color:black;
+/*   background: rgba(0,0,0,0.7); */
+/* 	color:black; */
 
 	}
 
@@ -38,24 +40,97 @@
 	}
 	
 	#base-header {
-    background: url(static/images/venice-beach.jpg) no-repeat;
-	height: 250px;
-	width: 350px
-    font-size: 17px;
-    margin: 0;
+  background: url({% static "images/GYOU_COVER_IMAGE.jpg" %}) no-repeat;
+	height: 300px;
+    
+  position: relative;
+  left: 0;
+	
+  /* Preserve aspet ratio */
+  min-width: 100%;
+  min-height: 100%;
+
+  font-size: 17px;
+  margin: 0;
 	background-position: top;
 	}
+
+  .navbar-brand {
+    left : 0px;
+  }
+
+   html{
+    min-height:100%;/* make sure it is at least as tall as the viewport */
+    position:relative
+}
+body{
+    height:100% /* force the BODY element to match the height of the HTML element */
+}
+
+  #righter{
+  
+/*     width: 40%; */
+     background-color: rgba(0,0,255,0.2);
+/*     float: right; */
+/*     position:absolute; */
+/*     top:0; */
+/*     bottom:0; */
+/*     z-index:-1; */
+     right:0px;
+     font-size:70px; 
+
+  }    
+
+    
+
+  #lefter {
+  font-size:20px;
+}
+    
+    
+.thumbnail{
+   width:250px;
+   height:250px;
+   position: relative;
+   left : 0px;
+   margin-left: auto;
+   margin-right: auto;
+   float: left;
+   font-size: 15px;
+   background-size:cover;
+  
+}
+.row {
+  margin-left: 0px;
+  font-size: 0px;
+}
+
+  
+  #thumbCat, #thumbTitle{
+  background-color: rgba(0,0,0,0.6);
+  color: rgba(255,255,255,0.8);
+  }
+  #thumbCat{
+    display:inline;
+  }
+  
+   h1,h2,h3 {
+     
+      font-family : 'Abril Fatface', serif;
+   } 
+    
 	</style>                 
   </head>
   <body>
 	<div class = "page-header" id = "base-header">
-	<nav class = "navbar navbar-custom navbar-fixed-top" role = "navigation" id ="navigationBar">
+	<nav class = "navbar navbar-default navbar-fixed-top" role = "navigation" id ="navigationBar">
 
 		
 		<div class = "container">
-			
-			
-			<a href = "/" class = "navbar-brand"><img src= "{% static "images/hank-moody.jpg" %}" alt ="Hank Moody 2" /></a>
+			<a href = "/" class = "navbar-brand">
+        <img src= "{% static "images/LOGO.jpg" %}" alt ="Logo" />
+      
+      </a>
 			
 			<button class = "navbar-toggle collapsed" data-toggle = "collapse" data-target="#navHeaderCollapse" id = "mobileButton">
 				<span class="sr-only">Toggle navigation</span>
@@ -73,22 +148,45 @@
 					{% for category in categories %}
 					<li><a href="/category/{{ category.slug }}">{{ category.name }}</a></li>
 					{% endfor %}
+          
 			
 					{% else %}
 					<strong> No categories </strong>
 					{% endif %}
 
-				</ul>
-			
-			</div>
-			
-			
-		
+          <li><a href="/about/">About Us</a><li>
 
-		</div>
-	</nav>
-	</div>
-	{% block body_block %}{% endblock %}
+				</ul>
+      </div>
+			</div>
+    	</nav>
+    
+    
+    
+    </div>
+
+    
+<div class="row">      
+      <div class="col-xs-12 col-sm-8 col-md-8" id = "lefter">
+        
+        {% block lefter_block %}{% endblock %}
+      </div>
+      
+    <div class="clearfix visible-xs-block"></div>
+  
+  <div class="col-xs-12 col-sm-4 col-md-4" id = "righter">
+
+        <h1>Latest News</h1>
+        {% block righter_block %}{% endblock %}
+      </div>
+  </div>
+
+      {% block body_block %}{% endblock %}
+    
+
+  
+    
+    
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
