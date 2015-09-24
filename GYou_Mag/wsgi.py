@@ -1,16 +1,24 @@
-"""
-WSGI config for GYou_Mag project.
-
-It exposes the WSGI callable as a module-level variable named ``application``.
-
-For more information on this file, see
-https://docs.djangoproject.com/en/1.8/howto/deployment/wsgi/
-"""
-
+# TURN ON THE VIRTUAL ENVIRONMENT FOR YOUR APPLICATION
+activate_this = '/home/gyoumagazine/.virtualenvs/app/bin/activate_this.py'
+execfile(activate_this, dict(__file__=activate_this))
 import os
+import sys
 
-from django.core.wsgi import get_wsgi_application
+# ADD YOUR PROJECT TO THE PYTHONPATH FOR THE PYTHON INSTANCE
+path = '/home/gyoumagazine/GYouMag/'
+if path not in sys.path:
+    sys.path.append(path)
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "GYou_Mag.settings")
+# IMPORTANTLY GO TO THE PROJECT DIR
+os.chdir(path)
 
-application = get_wsgi_application()
+# TELL DJANGO WHERE YOUR SETTINGS MODULE IS LOCATED
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'GYou_Mag.settings')
+
+# IMPORT THE DJANGO SETUP - NEW TO 1.7
+import django
+django.setup()
+
+# IMPORT THE DJANGO WSGI HANDLER TO TAKE CARE OF REQUESTS
+import django.core.handlers.wsgi
+application = django.core.handlers.wsgi.WSGIHandler()
