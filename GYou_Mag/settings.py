@@ -46,13 +46,6 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
 	  'app',
-#     'hitcount',
-    #'cms',  # django CMS itself
-    #'treebeard',  # utilities for implementing a tree
-    #'menus',  # helper for model independent hierarchical website navigation
-    #'south',  # Only needed for Django < 1.7
-    #'sekizai',  # for javascript and css management
-    #'djangocms_admin_style',  # for the admin skin. You **must** add 'djangocms_admin_style' in the list **before** 'django.contrib.admin'.
 
 )
 
