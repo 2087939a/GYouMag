@@ -19,21 +19,21 @@
 
 
 <!-- <p><li><a href="/category/{{ category.slug }}/add_article/">Add a new article in this category bitch</a></li></p> -->
-{% endif %} 
-{% if articles %}         
+{% endif %}
+{% if articles %}
 
   <div class="row">
   <div class="col-sm-6 col-md-8">
-    
+
     {% for art in trending %}
     <a href="/category/{{art.category.slug}}/{{art.slug}}/" class="thumbnail img-responsive" id = "thumb" style = "background: url('/media/{{art.image}}/');">
 
       <div class="caption">
         <p id = "thumbCat">{{art.category}}</p>
-        
+
         <h3 id = "thumbTitle">{{art.title}}</h3>
 
-        
+
       </div>
     </a>
     {% endfor %}
@@ -49,21 +49,21 @@
 {% block righter_block %}
 {% for art in latest_cat %}
     <a href="/category/{{art.category.slug}}/{{art.slug}}/" class="thumbnail img-responsive" id = "thumb" style = "background: url('/media/{{art.image}}/');">
-      
+
       <div class="caption">
         <p id = "thumbCat">{{art.category}}</p>
-        <h3 id = "thumbTitle">{{art.title}}</h3> 
+        <h3 id = "thumbTitle">{{art.title}}</h3>
        </div>
-        </a>   
+        </a>
       {% endfor %}
 <h/> Latest NEWS
 {% for art in latest %}
     <a href="/category/{{art.category.slug}}/{{art.slug}}/" class="thumbnail img-responsive" id = "thumb" style = "background: url('/media/{{art.image}}/');">
-      
+
       <div class="caption">
         <p id = "thumbCat">{{art.category}}</p>
-        <h3 id = "thumbTitle">{{art.title}}</h3> 
+        <h3 id = "thumbTitle">{{art.title}}</h3>
        </div>
-        </a>   
+        </a>
       {% endfor %}
 {% endblock %}

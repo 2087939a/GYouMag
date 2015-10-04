@@ -31,9 +31,9 @@ TEMPLATE_DIRS = (
 SECRET_KEY = '^sbr^cby!3&qe1f$@r73yg70j=5#2akye$*_2p=+3*j_wv9v@4'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -59,10 +59,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.middleware.locale.LocaleMiddleware',
-    #'cms.middleware.user.CurrentUserMiddleware',
-    #'cms.middleware.page.CurrentPageMiddleware',
-    #'cms.middleware.toolbar.ToolbarMiddleware',
-    #'cms.middleware.language.LanguageCookieMiddleware',
+
 )
 
 ROOT_URLCONF = 'GYou_Mag.urls'
@@ -98,7 +95,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-        
+
     }
 }
 
@@ -120,10 +117,13 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
+
+STATIC_ROOT = '/home/gyoumagazine/GYouMag/static/'
+
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, "static"),
+    os.path.join(BASE_DIR, 'static/'),
     '/var/www/static/',
 )
 

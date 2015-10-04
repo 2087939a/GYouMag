@@ -27,23 +27,22 @@ urlpatterns = patterns('',
         url(r'^category/(?P<category_name_slug>[\w\-]+)/$', views.category, name='category'),
         url(r'^category/(?P<category_name_slug>[\w\-]+)/(?P<article_title_slug>[\w\-]+)/$', views.article, name='article'),
         url(r'^category/(?P<category_name_slug>[\w\-]+)/add_article/$', views.add_article, name='add_article'),
-        url(r'^about/$', views.about, name='about')
+        url(r'^about/$', views.about, name='about'),
 
-        ,)
+        )
 
-
-
-
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 
-if settings.DEBUG:
+
+
+
+
+if not settings.DEBUG:
     urlpatterns += patterns(
         'django.views.static',
         (r'^media/(?P<path>.*)',
         'serve',
-        {'document_root': settings.MEDIA_ROOT}), )
+        {'document_root': settings.MEDIA_ROOT}),
+        )
 
-if not settings.DEBUG:
-        urlpatterns += static(settings.STATIC_URL,
-                              document_root=settings.STATIC_ROOT)
-	

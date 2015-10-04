@@ -5,7 +5,7 @@
 <html lang="en">
   <head>
     <title>G-You Magazine - {% block title %}{% endblock %}</title>
-	
+
 	<meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -24,7 +24,7 @@
 <!-- 	  <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src="{% static 'hitcount/hitcount-jquery.js' %}"></script> -->
 	<style>
-  
+
 	#navigationBar {
 /*   background: rgba(0,0,0,0.7); */
 /* 	color:black; */
@@ -34,18 +34,19 @@
 	#categoriesRight {
 	font-family : 'Abril Fatface', serif;
 	}
-	
+
 	#mobileButton {
 	color : black;
 	}
-	
+
 	#base-header {
-  background: url({% static "images/GYOU_COVER_IMAGE.jpg" %}) no-repeat;
+  /*background: url({% static 'images/GYOU_COVER_IMAGE.jpg' %}) no-repeat;*/
+  background: url('/media/images/GYOU_COVER_IMAGE.jpg/') no-repeat;
 	height: 300px;
-    
+
   position: relative;
   left: 0;
-	
+
   /* Preserve aspet ratio */
   min-width: 100%;
   min-height: 100%;
@@ -68,26 +69,20 @@ body{
 }
 
   #righter{
-  
-/*     width: 40%; */
+
      background-color: rgba(0,0,255,0.2);
-/*     float: right; */
-/*     position:absolute; */
-/*     top:0; */
-/*     bottom:0; */
-/*     z-index:-1; */
      right:0px;
-     font-size:70px; 
+     font-size:70px;
 
-  }    
+  }
 
-    
+
 
   #lefter {
   font-size:20px;
 }
-    
-    
+
+
 .thumbnail{
    width:250px;
    height:250px;
@@ -98,14 +93,14 @@ body{
    float: left;
    font-size: 15px;
    background-size:cover;
-  
+
 }
 .row {
   margin-left: 0px;
   font-size: 0px;
 }
 
-  
+
   #thumbCat, #thumbTitle{
   background-color: rgba(0,0,0,0.6);
   color: rgba(255,255,255,0.8);
@@ -113,43 +108,43 @@ body{
   #thumbCat{
     display:inline;
   }
-  
+
    h1,h2,h3 {
-     
+
       font-family : 'Abril Fatface', serif;
-   } 
-    
-	</style>                 
+   }
+
+	</style>
   </head>
   <body>
 	<div class = "page-header" id = "base-header">
 	<nav class = "navbar navbar-default navbar-fixed-top" role = "navigation" id ="navigationBar">
 
-		
+
 		<div class = "container">
 			<a href = "/" class = "navbar-brand">
-        <img src= "{% static "images/LOGO.jpg" %}" alt ="Logo" />
-      
+        <img src= '/media/images/LOGO.jpg/' alt ="Logo" />
+
       </a>
-			
+
 			<button class = "navbar-toggle collapsed" data-toggle = "collapse" data-target="#navHeaderCollapse" id = "mobileButton">
 				<span class="sr-only">Toggle navigation</span>
 				<span class = "icon-bar"></span>
 				<span class = "icon-bar"></span>
 				<span class = "icon-bar"></span>
 			</button>
-			
+
 			<div class="navbar-collapse collapse" id="navHeaderCollapse">
-			
-				<ul class = "nav navbar-nav navbar-right" id = "categoriesRight"> 
+
+				<ul class = "nav navbar-nav navbar-right" id = "categoriesRight">
 
 				{% if categories %}
-					
+
 					{% for category in categories %}
 					<li><a href="/category/{{ category.slug }}">{{ category.name }}</a></li>
 					{% endfor %}
-          
-			
+
+
 					{% else %}
 					<strong> No categories </strong>
 					{% endif %}
@@ -160,20 +155,20 @@ body{
       </div>
 			</div>
     	</nav>
-    
-    
-    
+
+
+
     </div>
 
-    
-<div class="row">      
+
+<div class="row">
       <div class="col-xs-12 col-sm-8 col-md-8" id = "lefter">
-        
+
         {% block lefter_block %}{% endblock %}
       </div>
-      
+
     <div class="clearfix visible-xs-block"></div>
-  
+
   <div class="col-xs-12 col-sm-4 col-md-4" id = "righter">
 
         <h1>Latest News</h1>
@@ -182,11 +177,11 @@ body{
   </div>
 
       {% block body_block %}{% endblock %}
-    
 
-  
-    
-    
+
+
+
+
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
